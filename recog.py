@@ -37,3 +37,15 @@ emotions={
 
 #DataFlair - Emotions to observe
 observed_emotions=['calm', 'happy', 'fearful', 'disgust']
+#DataFlair - Load the data and extract features for each sound file
+def load_data(test_size=0.2):
+    x,y=[],[]
+    for file in glob.glob("D:\\DataFlair\\ravdess data\\Actor_*\\*.wav"):
+        file_name=os.path.basename(file)
+        emotion=emotions[file_name.split("-")[2]]
+        if emotion not in observed_emotions:
+            continue
+        feature=extract_feature(file, mfcc=True, chroma=True, mel=True)
+        x.append(feature)
+        y.append(emotion)
+    return train_test_split(np.array(x), y, test_size=test_size, random_state=9)
