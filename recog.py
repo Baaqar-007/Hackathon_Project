@@ -59,3 +59,10 @@ print(f'Features extracted: {x_train.shape[1]}')
 model=MLPClassifier(alpha=0.01, batch_size=256, epsilon=1e-08, hidden_layer_sizes=(300,), learning_rate='adaptive', max_iter=500)
 #DataFlair - Train the model
 model.fit(x_train,y_train)
+#DataFlair - Predict for the test set
+y_pred=model.predict(x_test)
+#DataFlair - Calculate the accuracy of our model
+accuracy=accuracy_score(y_true=y_test, y_pred=y_pred)
+
+#DataFlair - Print the accuracy
+print("Accuracy: {:.2f}%".format(accuracy*100))
