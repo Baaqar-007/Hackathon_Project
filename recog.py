@@ -49,3 +49,7 @@ def load_data(test_size=0.2):
         x.append(feature)
         y.append(emotion)
     return train_test_split(np.array(x), y, test_size=test_size, random_state=9)
+#DataFlair - Split the dataset
+x_train,x_test,y_train,y_test=load_data(test_size=0.25)
+#DataFlair - Get the shape of the training and testing datasets
+print((x_train.shape[0], x_test.shape[0]))
